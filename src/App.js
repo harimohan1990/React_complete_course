@@ -1,15 +1,14 @@
 
 import './App.css';
 
-import HelloReactClassbased from './components/Hello_Word/HelloReactClassbased';
-
-import HelloReactfunctionalBased from './components/Hello_Word/HelloReactfunctionalBased'
+import RenderingClassBaesd from './components/RenderingComponent/renderingClassBaesdComponent';
+import RenderFunction from './components/RenderingComponent/renderingFunctionalBasedComponent';
 
 function App() {
   return (
     <div className="App">
-    <HelloReactClassbased/>
-     <HelloReactfunctionalBased/>
+       <RenderingClassBaesd/>
+       <RenderFunction/>
     </div>
   );
 }
