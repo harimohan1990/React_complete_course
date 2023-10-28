@@ -1,14 +1,15 @@
 
 import './App.css';
 
-import EventHandlingClass from './components/EventHandling/EventhandlingClassBased';
+import UseExternalLibrary from './components/ConditionalRendering/UseExternalLibrary';
 
-import EventHandlingFunction from './components/EventHandling/EventhandlingFunctionalBased'
+
+
+
 function App() {
   return (
     <div className="App">
-       <EventHandlingClass/>
-       <EventHandlingFunction/>
+    <UseExternalLibrary/>
     </div>
   );
 }
