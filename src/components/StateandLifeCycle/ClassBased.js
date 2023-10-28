@@ -3,10 +3,9 @@ import React, { Component } from 'react';
 class ClassBased extends Component {
   constructor(props) {
     super(props);
-    // Initialize state in the constructor
     this.state = {
       message: 'Hello, React!',
-      state: data
+      state: data,
     };
     console.log('Constructor: This is the first phase of the component lifecycle.');
   }
@@ -17,7 +16,6 @@ class ClassBased extends Component {
   }
 
   componentDidMount() {
-    // Use the fetch API to make an API call
     fetch('https://jsonplaceholder.typicode.com/posts/1')
       .then((response) => {
         if (!response.ok) {
@@ -26,37 +24,20 @@ class ClassBased extends Component {
         return response.json();
       })
       .then((data) => {
-        // Update the state with the fetched data
         this.setState({ data, isLoading: false, error: null });
       })
       .catch((error) => {
-        // Handle errors, if any
         this.setState({ data: null, isLoading: false, error: error.message });
       });
   }
 
-  render() {
-    console.log('Render: This method returns the JSX structure to be rendered.');
-    return (
-      <div>
-        <h1>{this.state.message}</h1>
-      </div>
-    );
+  shouldComponentUpdate(nextProps, nextState) {
+    console.log('shouldComponentUpdate: Decide whether the component should update.');
+    if (/* Your condition to update */) {
+      return true;
+    }
+    return false;
   }
-
-  renderMessage = () => {
-    console.log('Render Message: This is a custom method.');
-    return <p>{this.state.message}</p>;
-  }
-
-  // Custom methods can be defined outside of the lifecycle methods
- 
-
-  componentWillUnmount() {
-    console.log('componentWillUnmount: This method is called just before the component is removed from the DOM.');
-  }
-
-  // ...other custom methods
 
   render() {
     console.log('Render: This method returns the JSX structure to be rendered.');
@@ -67,6 +48,27 @@ class ClassBased extends Component {
       </div>
     );
   }
+
+  getSnapshotBeforeUpdate(prevProps, prevState) {
+    console.log('getSnapshotBeforeUpdate: Capture information before the update.');
+    return snapshot;
+  }
+
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    console.log('componentDidUpdate: Component has been updated.');
+    // You can perform post-update tasks here.
+  }
+
+  renderMessage = () => {
+    console.log('Render Message: This is a custom method.');
+    return <p>{this.state.message}</p>;
+  }
+
+  componentWillUnmount() {
+    console.log('componentWillUnmount: This method is called just before the component is removed from the DOM.');
+  }
+
+  // ...other custom methods
 }
 
 export default ClassBased;
